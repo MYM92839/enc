@@ -39,7 +39,7 @@ export default function Home() {
   const isMobile = size.width && size.width < 429
   return (
     <main>
-      <div className='h-full'>
+      <div className={`min-h-[${isMobile ? '1218px' : 'screen'}]`}>
         <Image
           className={`min-h-[${isMobile ? '1218px' : 'screen'}]`}
           src={isMobile ? '/m_bg.png' : '/web_bg.png'}
@@ -51,6 +51,7 @@ export default function Home() {
           }}
         />
         <Image
+          className={`min-h-[${isMobile ? '1218px' : 'screen'}]`}
           src={isMobile ? '/m_content.png' : '/web_content.png'}
           alt='content'
           fill
