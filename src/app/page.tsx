@@ -34,14 +34,23 @@ function useWindowSize(): Size {
   }, []) // Empty array ensures that effect is only run on mount
   return windowSize
 }
+type gridColumnsType = {
+  [key: number]: string
+}
+
+const gridColumns: gridColumnsType = {
+  0: 'min-h-[1218px]',
+  1: 'min-h-screen',
+}
+
 export default function Home() {
   const size: Size = useWindowSize()
   const isMobile = size.width && size.width < 429
   return (
     <main>
-      <div className={`min-h-[${isMobile ? '1218px' : 'screen'}]`}>
+      <div className={gridColumns[isMobile ? 0 : 1]}>
         <Image
-          className={`min-h-[${isMobile ? '1218px' : 'screen'}]`}
+          className={gridColumns[isMobile ? 0 : 1]}
           src={isMobile ? '/m_bg.png' : '/web_bg.png'}
           alt='background'
           fill
@@ -51,7 +60,7 @@ export default function Home() {
           }}
         />
         <Image
-          className={`min-h-[${isMobile ? '1218px' : 'screen'}]`}
+          className={gridColumns[isMobile ? 0 : 1]}
           src={isMobile ? '/m_content.png' : '/web_content.png'}
           alt='content'
           fill
